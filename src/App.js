@@ -1,21 +1,28 @@
-import Home from './pages/Home';
-import About from './pages/About';
-import Counter from './pages/Counter';
-import Inputs from './pages/Inputs';
-import {Routes, Route, Link} from 'react-router-dom';
+import React from 'react';
+import './App.css';
+import { useState } from 'react';
 
 function App() {
+  let [title, setTitle] = useState(['갈비 맛집', '우동 맛집', '닭갈비 맛집']);
   return (
     <div className="App">
-      <nav>
-        <Link to="/">Home</Link> | <Link to="/About">About</Link> | <Link to="/Counter">Counter</Link> | <Link to="/Inputs">Inputs</Link>
+      <nav className="black-nav">
+        <h1>맛집 블로그</h1>
       </nav>
-      <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/About" element={<About />}/>
-        <Route path="/Counter" element={<Counter />}/>
-        <Route path="/Inputs" element={<Inputs />}/>
-      </Routes>
+      <ol className="blog-list">
+        <li>
+          <h3>{title[0]}</h3>
+          <p>생성 날짜</p>
+        </li>
+        <li>
+          <h3>{title[1]}</h3>
+          <p>생성 날짜</p>
+        </li>
+        <li>
+          <h3>{title[2]}</h3>
+          <p>생성 날짜</p>
+        </li>
+      </ol>
     </div>
   );
 }

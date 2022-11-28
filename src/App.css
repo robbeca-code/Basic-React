@@ -1,10 +1,27 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.black-nav {
+  display: flex;
+  padding-left: 20px;
+  background-color: black;
+  color: #fff;
+}
+
+.blog-list {
+  list-style-type: none;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.blog-list > li {
+  border-bottom: 1px solid #949494;
 }
 
 @media (prefers-reduced-motion: no-preference) {
