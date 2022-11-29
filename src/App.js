@@ -4,7 +4,9 @@ import { useState } from 'react';
 
 function App() {
   let [title, setTitle] = useState(['갈비 맛집', '우동 맛집', '닭갈비 맛집']);
-  let [likeCount, setLikeCount] = useState(0);
+  let [firstLike, setFirstLike] = useState(0);
+  let [secondLike, setSecondLike] = useState(0);
+  let [thirdLike, setThirdLike] = useState(0);
   return (
     <div className="App">
       <nav className="black-nav">
@@ -14,11 +16,11 @@ function App() {
         <li>
           <div className="list-header">
             <h3>{title[0]}</h3>
-            <button type="button" className="btn like-btn" onClick={()=>{setLikeCount(likeCount + 1)}}>
+            <button type="button" className="btn like-btn" onClick={()=>{setFirstLike(firstLike + 1)}}>
             👍
             </button>
             <span className="like-count">
-              {likeCount}
+              {firstLike}
             </span>
           </div>
           
@@ -27,11 +29,11 @@ function App() {
         <li>
           <div className='list-header'>
             <h3>{title[1]}</h3>
-            <button type="button" className="btn like-btn" onClick={()=>{setLikeCount(likeCount + 1)}}>
+            <button type="button" className="btn like-btn" onClick={()=>{setSecondLike(secondLike + 1)}}>
             👍
             </button>
             <span className="like-count">
-              {likeCount}
+              {secondLike}
             </span>
           </div>
           <p>생성 날짜</p>
@@ -39,11 +41,11 @@ function App() {
         <li>
           <div className='list-header'>
             <h3>{title[2]}</h3>
-            <button type="button" className="btn like-btn" onClick={()=>{setLikeCount(likeCount + 1)}}>
+            <button type="button" className="btn like-btn" onClick={()=>{setThirdLike(thirdLike + 1)}}>
             👍
             </button>
             <span className="like-count">
-              {likeCount}
+              {thirdLike}
             </span>
           </div>
           <p>생성 날짜</p>
