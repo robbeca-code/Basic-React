@@ -10,6 +10,7 @@
   padding: 0;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .like-btn {
@@ -26,7 +27,7 @@
 .random-btn {
   margin-left: 20px;
   font-size: 1rem;
-  background-color: black;
+  background-color: #f44f1a;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   color: #fff;
@@ -37,10 +38,10 @@
   pointer-events: none;
 }
 
-.black-nav {
+.orange-nav {
   display: flex;
   padding-left: 20px;
-  background-color: black;
+  background-color: #f44f1a;
   color: #fff;
 }
 

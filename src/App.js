@@ -9,7 +9,7 @@ function App() {
   let [thirdLike, setThirdLike] = useState(0);
   return (
     <div className="App">
-      <nav className="black-nav">
+      <nav className="orange-nav">
         <h1>맛집 블로그</h1>
       </nav>
       <ol className="blog-list">
@@ -52,7 +52,11 @@ function App() {
         </li>
       </ol>
 
-      <button type="button" className="btn random-btn" onClick={()=>{setTitle(['곱창 맛집', '우동 맛집', '닭갈비 맛집'])}}>랜덤추천</button>
+      <button type="button" className="btn random-btn" onClick={()=>{
+          let copyTitle = [...title];
+          copyTitle[0] = '곱창 맛집';
+          setTitle(copyTitle);
+        }}>랜덤추천</button>
     </div>
   );
 }
