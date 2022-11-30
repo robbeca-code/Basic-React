@@ -54,9 +54,19 @@ function App() {
 
       <button type="button" className="btn random-btn" onClick={()=>{
           let copyTitle = [...title];
-          copyTitle[0] = '곱창 맛집';
+          copyTitle[0] = '만두국 맛집';
           setTitle(copyTitle);
-        }}>랜덤추천</button>
+        }}>
+        랜덤추천
+      </button>
+
+      <button type="button" className="btn sort-btn" onClick={()=>{
+          let copyTitle = [...title]
+          copyTitle.sort();
+          setTitle(copyTitle);
+        }}>
+        오름차순 정렬
+      </button>
     </div>
   );
 }

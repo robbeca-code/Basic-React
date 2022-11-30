@@ -33,6 +33,15 @@
   color: #fff;
 }
 
+.sort-btn {
+  margin-left: 20px;
+  font-size: 1rem;
+  background-color: #f44f1a;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: #fff;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
