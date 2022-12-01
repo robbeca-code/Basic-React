@@ -4,7 +4,11 @@ import { useState } from 'react';
 import event from './assets/event1.png';
 
 function App() {
-  let [title, setTitle] = useState(['갈비 맛집', '우동 맛집', '닭갈비 맛집']);
+  let [blog, setBlog] = useState([
+    {title: '갈비 맛집', date: '2021-04-12'},
+    {title: '우동 맛집', date: '2021-06-07'},
+    {title: '닭갈비 맛집', date: '2021-06-18'}
+  ]);
   let [firstLike, setFirstLike] = useState(0);
   let [secondLike, setSecondLike] = useState(0);
   let [thirdLike, setThirdLike] = useState(0);
@@ -19,7 +23,7 @@ function App() {
       <ol className="blog-list">
         <li>
           <div className="list-header">
-            <h3>{title[0]}</h3>
+            <h3>{blog[0].title}</h3>
             <button type="button" className="btn like-btn" onClick={() => {setFirstLike(firstLike + 1)}}>
             👍
             </button>
@@ -28,11 +32,11 @@ function App() {
             </span>
           </div>
           
-          <p>생성 날짜</p>
+          <p>{blog[0].date}</p>
         </li>
         <li>
           <div className='list-header'>
-            <h3>{title[1]}</h3>
+            <h3>{blog[1].title}</h3>
             <button type="button" className="btn like-btn" onClick={() => {setSecondLike(secondLike + 1)}}>
             👍
             </button>
@@ -40,7 +44,7 @@ function App() {
               {secondLike}
             </span>
           </div>
-          <p>생성 날짜</p>
+          <p>{blog[1].date}</p>
         </li>
         <li>
           <div className='list-header'>
@@ -50,7 +54,7 @@ function App() {
                 } else {
                   setModal(true);
                 }
-              }}>{title[2]}</h3>
+              }}>{blog[2].title}</h3>
             <button type="button" className="btn like-btn" onClick={() => {setThirdLike(thirdLike + 1)}}>
             👍
             </button>
@@ -58,7 +62,7 @@ function App() {
               {thirdLike}
             </span>
           </div>
-          <p>생성 날짜</p>
+          <p>{blog[2].date}</p>
         </li>
       </ol>
       
@@ -67,17 +71,19 @@ function App() {
       }
 
       <button type="button" className="btn random-btn" onClick={() => {
-          let copyTitle = [...title];
-          copyTitle[0] = '만두국 맛집';
-          setTitle(copyTitle);
+          let copyBlog = [...blog];
+          copyBlog[0].title = '만두국 맛집';
+          setBlog(copyBlog);
         }}>
         랜덤추천
       </button>
 
       <button type="button" className="btn sort-btn" onClick={() => {
-          let copyTitle = [...title]
-          copyTitle.sort();
-          setTitle(copyTitle);
+          let copyBlog = [...blog];
+          copyBlog.sort((item1, item2) => {
+            return item1.title > item2.title ? 1 : -1
+          });
+          setBlog(copyBlog);
         }}>
         오름차순 정렬
       </button>
