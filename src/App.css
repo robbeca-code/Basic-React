@@ -42,6 +42,23 @@
   color: #fff;
 }
 
+.modal {
+  padding: 20px 30px;
+  margin-bottom: 20px;
+  background-color: #f4511a23;
+  text-align: left;
+}
+
+.banner {
+  width: 100%;
+  background-color: #FDD8DF;
+}
+
+.banner > img {
+  display: block;
+  margin: 0 auto;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
