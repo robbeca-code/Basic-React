@@ -8,6 +8,8 @@ function App() {
   let [firstLike, setFirstLike] = useState(0);
   let [secondLike, setSecondLike] = useState(0);
   let [thirdLike, setThirdLike] = useState(0);
+  let [modal, setModal] = useState(false);
+
   return (
     <div className="App">
       <nav className="orange-nav">
@@ -18,7 +20,7 @@ function App() {
         <li>
           <div className="list-header">
             <h3>{title[0]}</h3>
-            <button type="button" className="btn like-btn" onClick={()=>{setFirstLike(firstLike + 1)}}>
+            <button type="button" className="btn like-btn" onClick={() => {setFirstLike(firstLike + 1)}}>
             👍
             </button>
             <span className="like-count">
@@ -31,7 +33,7 @@ function App() {
         <li>
           <div className='list-header'>
             <h3>{title[1]}</h3>
-            <button type="button" className="btn like-btn" onClick={()=>{setSecondLike(secondLike + 1)}}>
+            <button type="button" className="btn like-btn" onClick={() => {setSecondLike(secondLike + 1)}}>
             👍
             </button>
             <span className="like-count">
@@ -42,8 +44,14 @@ function App() {
         </li>
         <li>
           <div className='list-header'>
-            <h3>{title[2]}</h3>
-            <button type="button" className="btn like-btn" onClick={()=>{setThirdLike(thirdLike + 1)}}>
+            <h3 onClick={() => {
+                if(modal){
+                  setModal(false);
+                } else {
+                  setModal(true);
+                }
+              }}>{title[2]}</h3>
+            <button type="button" className="btn like-btn" onClick={() => {setThirdLike(thirdLike + 1)}}>
             👍
             </button>
             <span className="like-count">
@@ -53,9 +61,12 @@ function App() {
           <p>생성 날짜</p>
         </li>
       </ol>
-      <Modal/>
+      
+      {
+        modal === true ? <Modal/> : null
+      }
 
-      <button type="button" className="btn random-btn" onClick={()=>{
+      <button type="button" className="btn random-btn" onClick={() => {
           let copyTitle = [...title];
           copyTitle[0] = '만두국 맛집';
           setTitle(copyTitle);
@@ -63,7 +74,7 @@ function App() {
         랜덤추천
       </button>
 
-      <button type="button" className="btn sort-btn" onClick={()=>{
+      <button type="button" className="btn sort-btn" onClick={() => {
           let copyTitle = [...title]
           copyTitle.sort();
           setTitle(copyTitle);

@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.list-header > h3 {
+  cursor: pointer;
+}
+
 .btn {
   padding: 0;
   background-color: transparent;
