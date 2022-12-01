@@ -9,9 +9,7 @@ function App() {
     {title: '우동 맛집', date: '2021-06-07'},
     {title: '닭갈비 맛집', date: '2021-06-18'}
   ]);
-  let [firstLike, setFirstLike] = useState(0);
-  let [secondLike, setSecondLike] = useState(0);
-  let [thirdLike, setThirdLike] = useState(0);
+  let [like, setLike] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
 
   return (
@@ -21,49 +19,30 @@ function App() {
       </nav>
       <Banner/>
       <ol className="blog-list">
-        <li>
-          <div className="list-header">
-            <h3>{blog[0].title}</h3>
-            <button type="button" className="btn like-btn" onClick={() => {setFirstLike(firstLike + 1)}}>
-            👍
-            </button>
-            <span className="like-count">
-              {firstLike}
-            </span>
-          </div>
-          
-          <p>{blog[0].date}</p>
-        </li>
-        <li>
-          <div className='list-header'>
-            <h3>{blog[1].title}</h3>
-            <button type="button" className="btn like-btn" onClick={() => {setSecondLike(secondLike + 1)}}>
-            👍
-            </button>
-            <span className="like-count">
-              {secondLike}
-            </span>
-          </div>
-          <p>{blog[1].date}</p>
-        </li>
-        <li>
-          <div className='list-header'>
-            <h3 onClick={() => {
-                if(modal){
-                  setModal(false);
-                } else {
-                  setModal(true);
-                }
-              }}>{blog[2].title}</h3>
-            <button type="button" className="btn like-btn" onClick={() => {setThirdLike(thirdLike + 1)}}>
-            👍
-            </button>
-            <span className="like-count">
-              {thirdLike}
-            </span>
-          </div>
-          <p>{blog[2].date}</p>
-        </li>
+        {
+          blog.map((list, i) => {
+              return(
+                <li>
+                  <div className="list-header">
+                    <h3>{list.title}</h3>
+                    <button type="button" className="btn like-btn" onClick={() => {
+                        let copyLike = [...like];
+                        copyLike[i] = like[i] + 1;
+                        setLike(copyLike);
+                      }}>
+                    👍
+                    </button>
+                    <span className="like-count">
+                      {like[i]}
+                    </span>
+                  </div>
+                  
+                  <p>{list.date}</p>
+                </li>
+              );
+            }
+          )
+        }
       </ol>
       
       {
