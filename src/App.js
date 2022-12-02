@@ -10,7 +10,7 @@ function App() {
     {title: '닭갈비 맛집', date: '2021-06-18'}
   ]);
   let [like, setLike] = useState([0, 0, 0]);
-  let [modal, setModal] = useState(false);
+  let [modal, setModal] = useState([false, false, false]);
 
   return (
     <div className="App">
@@ -23,31 +23,45 @@ function App() {
           blog.map((list, i) => {
               return(
                 <li>
-                  <div className="list-header">
-                    <h3>{list.title}</h3>
-                    <button type="button" className="btn like-btn" onClick={() => {
-                        let copyLike = [...like];
-                        copyLike[i] = like[i] + 1;
-                        setLike(copyLike);
-                      }}>
-                    👍
-                    </button>
-                    <span className="like-count">
-                      {like[i]}
-                    </span>
-                  </div>
+                  <article>
+                    <header className="list-header">
+                      <h3 onClick={
+                        () => {
+                          if(modal[i]) {
+                            let copyModal = [...modal];
+                            copyModal[i] = false;
+                            setModal(copyModal);
+                          } else {
+                            let copyModal = [...modal];
+                            copyModal[i] = true;
+                            setModal(copyModal);
+                          }
+                        }
+                      }>{list.title}</h3>
+                      <button type="button" className="btn like-btn" onClick={() => {
+                          let copyLike = [...like];
+                          copyLike[i] = like[i] + 1;
+                          setLike(copyLike);
+                        }}>
+                      👍
+                      </button>
+                      <span className="like-count">
+                        {like[i]}
+                      </span>
+                    </header>
+                    
+                    <p>{list.date}</p>
+                  </article>
                   
-                  <p>{list.date}</p>
+                  {
+                    modal[i] === true ? <Modal setBlog={setBlog} blog={blog} list={list}/> : null
+                  }
                 </li>
               );
             }
           )
         }
       </ol>
-      
-      {
-        modal === true ? <Modal/> : null
-      }
 
       <button type="button" className="btn random-btn" onClick={() => {
           let copyBlog = [...blog];
@@ -70,12 +84,19 @@ function App() {
   );
 }
 
-function Modal() {
+function Modal(props) {
   return(
       <aside className="modal">
-        <h3>제목</h3>
-        <span>날짜</span>
+        <h3>{props.list.title}</h3>
+        <span>{props.list.date}</span>
         <p>상세내용</p>
+        <button type="button" className="btn change-btn" onClick={() => {
+          let copyBlog = props.blog;
+          copyBlog[0].title = "녹두전 맛집";
+          props.setBlog(copyBlog);
+        }}>
+          제목수정
+        </button>
       </aside>
   );
 }
