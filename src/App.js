@@ -10,7 +10,8 @@ function App() {
     {title: '닭갈비 맛집', date: '2021-06-18'}
   ]);
   let [like, setLike] = useState([0, 0, 0]);
-  let [modal, setModal] = useState([false, false, false]);
+  let [modal, setModal] = useState(false);
+  let [num, setNum] = useState(0);
 
   return (
     <div className="App">
@@ -22,19 +23,17 @@ function App() {
         {
           blog.map((list, i) => {
               return(
-                <li>
+                <li key={i}>
                   <article>
                     <header className="list-header">
                       <h3 onClick={
                         () => {
-                          if(modal[i]) {
-                            let copyModal = [...modal];
-                            copyModal[i] = false;
-                            setModal(copyModal);
+                          setNum(i);
+
+                          if(modal) {
+                            setModal(false);
                           } else {
-                            let copyModal = [...modal];
-                            copyModal[i] = true;
-                            setModal(copyModal);
+                            setModal(true);
                           }
                         }
                       }>{list.title}</h3>
@@ -52,16 +51,16 @@ function App() {
                     
                     <p>{list.date}</p>
                   </article>
-                  
-                  {
-                    modal[i] === true ? <Modal setBlog={setBlog} blog={blog} list={list}/> : null
-                  }
                 </li>
               );
             }
           )
         }
       </ol>
+
+      {
+        modal ? <Modal num={num} blog={blog}/> : null
+      }
 
       <button type="button" className="btn random-btn" onClick={() => {
           let copyBlog = [...blog];
@@ -87,16 +86,9 @@ function App() {
 function Modal(props) {
   return(
       <aside className="modal">
-        <h3>{props.list.title}</h3>
-        <span>{props.list.date}</span>
+        <h3>{props.blog[props.num].title}</h3>
+        <span>{props.blog[props.num].date}</span>
         <p>상세내용</p>
-        <button type="button" className="btn change-btn" onClick={() => {
-          let copyBlog = props.blog;
-          copyBlog[0].title = "녹두전 맛집";
-          props.setBlog(copyBlog);
-        }}>
-          제목수정
-        </button>
       </aside>
   );
 }
