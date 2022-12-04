@@ -28,6 +28,15 @@
   font-weight: bold;
 }
 
+.search-title {
+  display: block;
+  margin: 0 auto 15px;
+}
+
+.btn-container {
+  margin-top: 15px;
+}
+
 .random-btn {
   margin-left: 20px;
   font-size: 1rem;
@@ -52,6 +61,17 @@
   padding: 0.3rem 0.7rem;
   border-radius: 5px;
   color: #fff;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 0;
+  line-height: 85px;
+  right: 0;
+}
+
+.list {
+  position: relative;
 }
 
 .modal {
